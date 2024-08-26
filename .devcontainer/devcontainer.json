@@ -1,16 +1,18 @@
 {
-	"name": "LaTeX",
-	"image": "registry.gitlab.com/islandoftex/images/texlive:TL2024-2024-08-25-full",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"James-Yu.latex-workshop",
-				"draivin.hsnips",
-				"EditorConfig.EditorConfig"
-			],
-			"settings": {
-				"hsnips.hsnipsPath": ".vscode/"
-			}
-		}
-	}
+    "name": "LaTeX",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "James-Yu.latex-workshop",
+                "draivin.hsnips",
+                "EditorConfig.EditorConfig"
+            ],
+            "settings": {
+                "hsnips.hsnipsPath": ".vscode/"
+            }
+        }
+    }
 }
