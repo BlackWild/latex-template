@@ -1,0 +1,123 @@
+# Author: Siavash Davani (https://github.com/BlackWild)
+# Heavily inspired and sometimes copied from Gilles Castel's latex-snippets (https://github.com/gillescastel/latex-snippets/)
+# I also used https://github.com/artisticat1/obsidian-latex-suite/tree/main
+
+
+# TODO: later, add more documetnation
+
+# The math(context) function figures out where the editor's cursor is currently in a math scope
+# the constant GREEK variable contains the Greek alphabets.
+global
+function math(context) {
+    return context.scopes.some(s => s.startsWith("meta.math"));
+}
+const GREEK = "alpha|beta|gamma|Gamma|delta|Delta|epsilon|varepsilon|zeta|eta|theta|Theta|iota|kappa|lambda|Lambda|mu|nu|xi|Xi|pi|Pi|rho|sigma|Sigma|tau|upsilon|phi|Phi|chi|psi|Psi|omega|Omega"
+endglobal
+
+### Environments
+
+snippet beg "begin{} / end{}" bA
+\begin{$1}
+    $2
+\end{$1}
+$0
+endsnippet
+
+snippet beq "begin{equation} / end{equation}" bA
+\begin{equation}
+    $1
+\end{equation}
+$0
+endsnippet
+
+snippet dm "begin{equation} / end{equation}" wA
+\begin{equation}
+    $1
+\end{equation}
+$0
+endsnippet
+
+snippet mk "Inline Math" wA
+$$1$``
+if (t[1] && !([',', '.', '?', '-', ' '].includes(t[1][0]))) {
+	rv = ' '
+} else {
+	rv = ''
+}
+``$2
+endsnippet
+
+### General notation
+
+# surround things in \hat{}, example: Xhat -> \hat{X}
+context math(context)
+snippet `([a-zA-Z]+)hat` "hat" iA
+\hat{``rv=m[1]``}
+endsnippet
+
+# surround things in \vec{}, example: rvec -> \vec{r}
+context math(context)
+snippet `([a-zA-Z]+)vec` "vec" iA
+\vec{``rv=m[1]``}
+endsnippet
+
+### Sub/Sup
+
+context math(context)
+snippet ^ "sup" iA
+^{$1}$0
+endsnippet
+
+context math(context)
+snippet rd "sup" iA
+^{$1}$0
+endsnippet
+
+context math(context)
+snippet _ "sub" iA
+_{$1}$0
+endsnippet
+
+context math(context)
+snippet sd "sub" iA
+_{$1}$0
+endsnippet
+
+### Bra-ket notation
+
+context math(context)
+snippet bra "bra" wA
+\bra{$1}$0
+endsnippet
+
+context math(context)
+snippet ket "ket" wA
+\ket{$1}$0
+endsnippet
+
+context math(context)
+snippet bk "braket" wA
+\braket{$1}{$2}$0
+endsnippet
+
+### Greek
+
+# adds backslash to greek alphabets
+context math(context)
+snippet `([^\\])(alpha|beta|gamma|Gamma|delta|Delta|epsilon|varepsilon|zeta|eta|theta|Theta|iota|kappa|lambda|Lambda|mu|nu|xi|Xi|pi|Pi|rho|sigma|Sigma|tau|upsilon|phi|Phi|chi|psi|Psi|omega|Omega)` "adding backslash to greek words" A
+``rv = `${m[1]}\\${m[2]}` ``
+endsnippet
+# this could have been "snippet `([^\])(${GREEK})`" but the problem was that
+# I could not use variables defined in the global scope in the regex
+
+### Calculus
+
+context math(context)
+snippet par "d/dx" w
+\frac{\partial ${1:y} }{\partial ${2:x} } $0
+endsnippet
+
+context math(context)
+snippet int "integral" w
+\int d ${1:x} \, $0
+endsnippet
