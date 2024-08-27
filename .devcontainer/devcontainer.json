@@ -8,7 +8,8 @@
             "extensions": [
                 "James-Yu.latex-workshop",
                 "draivin.hsnips",
-                "EditorConfig.EditorConfig"
+                "EditorConfig.EditorConfig",
+                "ms-azuretools.vscode-docker"
             ],
             "settings": {
                 "hsnips.hsnipsPath": ".vscode/"
