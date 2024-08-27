@@ -1,8 +1,5 @@
 name: Semantic Release Check 📝
 on:
-  push:
-    branches-ignore:
-      - main
   pull_request:
       branches:
           - main
