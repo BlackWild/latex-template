@@ -1,8 +1,6 @@
 {
     "name": "LaTeX",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
+    "image": "registry.gitlab.com/islandoftex/images/texlive:TL2024-2024-08-25-full",
     "customizations": {
         "vscode": {
             "extensions": [
