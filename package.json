@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/blackwild-group/personal/foundational/templates/latex-template.git"
+    "url": "git+https://github.com/BlackWild/latex-template.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/blackwild-group/personal/foundational/templates/latex-template/issues"
+    "url": "https://github.com/BlackWild/latex-template/issues"
   },
-  "homepage": "https://gitlab.com/blackwild-group/personal/foundational/templates/latex-template#readme",
+  "homepage": "https://github.com/BlackWild/latex-template",
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
